@@ -1,1 +1,11 @@
-123
+# Global defaults and risk settings
+base_ccy: GBP
+report_dir: artifacts
+calendar: XNYS   # NYSE calendar for US equities
+
+risk:
+  max_daily_dd: 0.05        # 5% daily stop: block new orders if breached
+  max_weekly_dd: 0.10       # 10% weekly stop: flatten/pause if breached
+  max_gross_exposure: 0.70  # cap total exposure at 70% of NAV
+  max_positions: 10         # maximum concurrent open positions
+  per_trade_risk: 0.015     # risk 1.5% of NAV per trade (for sizing)
