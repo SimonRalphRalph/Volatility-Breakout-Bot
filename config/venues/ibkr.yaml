@@ -1,0 +1,11 @@
+# IBKR connection & venue defaults
+host: 127.0.0.1
+port: 7497              # 7497 paper, 7496 live
+clientId: 101
+account: DU1234567
+
+primaryExchange: SMART
+currency: USD
+
+# Liquidity guardrail
+adv_participation_max: 0.05   # do not exceed 5% of 20-day ADV per order
