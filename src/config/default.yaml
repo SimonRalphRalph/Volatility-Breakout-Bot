@@ -1,9 +1,0 @@
-base_ccy: GBP
-report_dir: artifacts
-calendar: XNYS
-risk:
-  max_daily_dd: 0.05   # 5%
-  max_weekly_dd: 0.10  # 10%
-  max_gross_exposure: 0.70
-  max_positions: 10
-  per_trade_risk: 0.015   # 1.5% of NAV
