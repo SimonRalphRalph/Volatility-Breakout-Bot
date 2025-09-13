@@ -47,7 +47,7 @@ def build_targets(
 
     # Bracket parameters
     entry_limit = px * (1 + entry_limit_pct)
-    stop_loss = px * (1 - stop_loss_pct)
+    stop_loss   = px * (1 - stop_loss_pct)
     trail_start = px * (1 + trail_start_pct)
 
     return [
