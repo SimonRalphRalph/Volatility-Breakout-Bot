@@ -89,7 +89,7 @@ def test_breakout_long_signal_and_pipeline_no_signal():
 def test_breakout_long_signal_and_pipeline_with_signal():
     df = _make_df(no_signal=False)
     sig = breakout_long(df, theta=0.012, vol_mult=1.5)
-    assert sig.iloc[-1] is True  # last bar breaks out
+    assert bool(sig.iloc[-1])  # last bar breaks out
 
     targets = build_targets(
         symbol="TEST",
