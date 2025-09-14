@@ -14,10 +14,20 @@ def atr_pct(df: pd.DataFrame, n: int = 20) -> pd.Series:
 
 
 def breakout_long(df: pd.DataFrame, theta: float, vol_mult: float) -> pd.Series:
+    """
+    Breakout if today's HIGH exceeds (yesterday's high * (1 + theta)).
+    If vol_mult <= 0, skip the volume confirmation. Otherwise require
+    today's volume > vol_mult * 20-day average volume.
+    """
     prev_high = df["high"].shift(1)
-    level = prev_high * (1 + theta)
-    breakout = (df["close"] > level) & (df["volume"] > vol_mult * df["volume"].rolling(20).mean())
-    return breakout.fillna(False)
+    level = prev_high * (1 + float(theta))
+    broke = df["high"] > level
+
+    if vol_mult is None or float(vol_mult) <= 0:
+        return broke.fillna(False)
+
+    vol_ok = df["volume"] > float(vol_mult) * df["volume"].rolling(20).mean()
+    return (broke & vol_ok).fillna(False)
 
 # --- Sizing ---
 
