@@ -1,5 +1,5 @@
 # Volatility Breakout Bot
-Aggressive but risk-managed US small/mid-cap breakout strategy with strict stops, executed via IBKR.
+Aggressive but risk-managed US small/mid-cap breakout strategy with strict stops, executed via IBKR desktop (MacOS).
 
 ## Quickstart
 ```bash
