@@ -1,6 +1,6 @@
 from __future__ import annotations
 import asyncio
-from datetime import datetime, timedelta
+from datetime import datetime, UTC, timedelta
 from typing import Dict, List
 
 import typer
@@ -23,7 +23,7 @@ app = typer.Typer(add_completion=False)
 
 def _date_strs(days_back: int = 60) -> tuple[str, str]:
     """Helper: get ISO start/end dates for Polygon fetch."""
-    end = datetime.utcnow().date()
+    end = datetime.now(UTC).date()
     start = end - timedelta(days=days_back)
     return start.isoformat(), end.isoformat()
 
@@ -36,7 +36,7 @@ async def _fetch_bars(symbols: List[str], start: str, end: str):
 @app.command()
 def main(
     mode: str = typer.Option("paper", help="paper|live"),
-    run_id: str = typer.Option(datetime.utcnow().strftime("%Y%m%d")),
+    run_id: str = typer.Option(datetime.now(UTC).strftime("%Y%m%d")),
     dry_run: bool = typer.Option(False, help="Compute targets but do not submit orders"),
     nav_gbp: float = typer.Option(500.0, help="Override NAV in GBP (temporary until wired to IBKR)"),
     days_back: int = typer.Option(60, help="Bars lookback window for signal calc"),
