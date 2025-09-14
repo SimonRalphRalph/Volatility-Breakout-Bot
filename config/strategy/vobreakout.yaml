@@ -5,8 +5,8 @@ universe:
   min_atr_pct: 0.03       # 3%
 
 signal:
-  breakout_threshold: 0.003    # 1.2% above prev high/low
-  vol_multiplier: 1.0          # 150% of avg volume
+  breakout_threshold: 0.001    # 1.2% above prev high/low
+  vol_multiplier: 0.0          # 150% of avg volume
   allow_shorts: false
 
 execution:
